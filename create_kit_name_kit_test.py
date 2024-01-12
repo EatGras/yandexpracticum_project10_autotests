@@ -36,4 +36,30 @@ def negative_assertion_no_name(kit_body):
 
 # Positive tests
 # Name-field in a kit_body consists of one symbol
+def test_create_kit_1_symbol_in_name_get_success_response():
+    positive_assertion("a")
 
+
+# Name-field in a kit_body consists of 511 symbols
+def test_create_kit_511_symbols_in_name_get_success_response():
+    positive_assertion(symbol511)
+
+
+# Name-field in a kit_body contains an english letter
+def test_create_kit_english_letters_in_name_get_success_response():
+    positive_assertion("QWErty")
+
+
+# Name-field in a kit_body contains a russian letter
+def test_create_kit_russian_letters_in_name_get_success_response():
+    positive_assertion("Мария")
+
+
+# Name-field in a kit_body contains a special symbol
+def test_create_kit_has_special_symbols_in_name_get_success_response():
+    positive_assertion("\"№%@\",")
+
+
+# Name-field in a kit_body contains a space symbol
+def test_create_kit_has_space_in_name_get_success_response():
+    positive_assertion("Человек и КО")
