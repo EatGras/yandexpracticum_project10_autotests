@@ -63,3 +63,32 @@ def test_create_kit_has_special_symbols_in_name_get_success_response():
 # Name-field in a kit_body contains a space symbol
 def test_create_kit_has_space_in_name_get_success_response():
     positive_assertion("Человек и КО")
+
+
+# Name-field in a kit_body contains a numeric symbol
+def test_create_kit_has_number_in_name_get_success_response():
+    positive_assertion("123")
+
+
+# Negative tests
+# Name-field in a kit_body contains an empty string
+def test_create_kit_empty_name_get_error_response():
+    negative_assertion("")
+
+
+# Name-field in a kit_body contains 512 symbols
+def test_create_kit_512_symbols_in_name_get_error_response():
+    negative_assertion(symbol512)
+
+
+# Kit_body doesn't contain any name-field
+def test_create_kit_no_name_get_error_response():
+    current_kit_body_negative_no_name = data.kit_body.copy()
+    # Deleting a name-field from a query
+    current_kit_body_negative_no_name.pop("name")
+    negative_assertion_no_name(current_kit_body_negative_no_name)
+
+
+# Name-field in a kit_body is a number
+def test_create_kit_numeric_type_name_get_error_response():
+    negative_assertion(123)
